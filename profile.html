@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User's Profile</title>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+<div class="profile-card">
+    <div class="profile-picture">
+        <img id="profile-image" src="" alt="User Profile Picture">
+        <!-- Input to change profile picture -->
+        <label for="profile-input" class="change-picture-label">Change Profile Picture</label>
+        <input type="file" id="profile-input" accept="image/*" onchange="changeProfilePicture(event)">
+    </div>
+    <div class="username" id="username">Flower Valley</div>
+    <div class="profile-buttons">
+        <button onclick="changeName()">Change Name</button>
+        <div class="profile-buttons">
+         <a href="register.html" class="link"> Log out</a></p> 
+    </div>
+</div>
+    </div>
+</div>
+
+<script>
+    // Function to change the username
+    function changeName() {
+        let newName = prompt("Enter a new name:"); 
+        if (newName) {
+            document.getElementById("username").innerText = newName; 
+        }
+    }
+
+    // Function to change the profile picture
+    function changeProfilePicture(event) {
+        const file = event.target.files[0]; 
+        if (file) {
+            const reader = new FileReader(); 
+            reader.onload = function(e) {
+                document.getElementById("profile-image").src = e.target.result; 
+            };
+            reader.readAsDataURL(file); 
+        }
+    }
+</script>
+
+</body>
+</html>

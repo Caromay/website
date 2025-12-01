@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="css/cart.css">
+
+</head>
+<body>
+     <header>
+
+      <a href="#" class="logo"> Flower Valley <span>.</span></a>
+      
+      <nav class="navbar">
+          <a href="index.html">home</a>
+      </nav>
+    
+  </header>
+   </section>
+
+    <section class="products" id="products">
+        <h1 class="heading">latest<span> products</span></h1>
+        
+        <div class="box-container">
+            <div class="box">
+                <div class="image">
+                    <img src="images/roses.jpg" alt="">
+                    <div class="icons">
+                        <a href="#contact" class="cart-btn" onclick="addToCart('bouquet of roses', 19.99)">add to cart</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>bouquet of roses</h3>
+                    <div class="price">$19.99</div>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="image">
+                    <img src="images/tulips.jpg" alt="">
+                    <div class="icons">
+                        <a href="#contact" class="cart-btn" onclick="addToCart('bouquet of tulips', 20.00)">add to cart</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>bouquet of tulips</h3>
+                    <div class="price">$20.00</div>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="image">
+                    <img src="images/sunflower.jpg" alt="">
+                    <div class="icons">
+                        <a href="#contact" class="cart-btn" onclick="addToCart('bouquet of sunflower', 18.99)">add to cart</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>bouquet of sunflower</h3>
+                    <div class="price">$18.99</div>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="image">
+                    <img src="images/lavender.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="cart-btn" onclick="addToCart('bouquet of lavender', 17.99)">add to cart</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>bouquet of lavender</h3>
+                    <div class="price">$17.99</div>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="image">
+                    <img src="images/daisy.jpg.jpg" alt="">
+                    <div class="icons">
+                        <a href="#contact" class="cart-btn" onclick="addToCart('bouquet of daisies', 15.99)">add to cart</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>bouquet of daisies</h3>
+                    <div class="price">$15.99</div>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="image">
+                    <img src="images/lily.jpg.jpg" alt="">
+                    <div class="icons">
+                        <a href="#" class="cart-btn" onclick="addToCart('bouquet of lilies', 16.99)">add to cart</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>bouquet of lilies</h3>
+                    <div class="price">$16.99</div>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="image">
+                    <img src="images/pink roses.jpg.jpg" alt="">
+                    <div class="icons">
+                        <a href="#contact" class="cart-btn" onclick="addToCart('bouquet of pink roses', 19.99)">add to cart</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>bouquet of pink roses</h3>
+                    <div class="price">$19.99</div>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="image">
+                    <img src="images/peony.jpg.jpg" alt="">
+                    <div class="icons">
+                        <a href="#contact" class="cart-btn" onclick="addToCart('bouquet of peonies', 15.99)">add to cart</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>bouquet of peonies</h3>
+                    <div class="price">$15.99</div>
+                </div>
+            </div>
+            
+            <div class="box">
+                <div class="image">
+                    <img src="images/orchids.jpg.jpg" alt="">
+                    <div class="icons">
+                        <a href="#contact" class="cart-btn" onclick="addToCart('bouquet of orchids', 14.99)">add to cart</a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>bouquet of orchids</h3>
+                    <div class="price">$14.99</div>
+                </div>
+            </div>
+         </div>
+        
+            
+     <section class="contact" id="contact">
+        <h1 class="heading"><span>your</span> cart</h1>
+        <div class="row">
+            <form action="" onsubmit="return false;"> <!-- Prevent form submission -->
+                <div class="cart">
+                    <div id="cart-items" class="cart-items"></div>
+                    <p class="cart-total">Total: $<span id="cart-total">0.00</span></p>
+                    <input type="text" name="name" id="name" placeholder="Name"><br>
+                    <input type="text" name="location" id="location" placeholder="Location"><br><br>
+                    <h2>Mode of Payment</h2><br>
+                    <select>
+                    	<option value="gcash">Gcash</option>
+                    	<option value="gcash">COD</option>
+                    </select><br><br>
+                    <button onclick="viewCart()">View Cart</button>
+                    <button onclick="window.location.href='confirmation.html'">Place Order</button>
+                </div>
+            </form>
+        </div>
+    </section>
+  
+    <script>
+        const cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            cartItems.innerHTML = '';
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+
+                const itemInfo = document.createElement('span');
+                itemInfo.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                itemElement.appendChild(itemInfo);
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.classList.add('remove-button');
+                removeButton.onclick = () => removeFromCart(index);
+
+                itemElement.appendChild(removeButton);
+                cartItems.appendChild(itemElement);
+            });
+
+            cartTotal.textContent = total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function viewCart() {
+            if (cart.length === 0) {
+                alert("Your cart is empty.");
+            } else {
+                let cartDetails = "Items in Cart:\n";
+                cart.forEach(item => {
+                    cartDetails += `${item.name} - $${item.price.toFixed(2)}\n`;
+                });
+                alert(cartDetails);
+            }
+        }
+    </script>
+</body>
+
+
+
+</html>
